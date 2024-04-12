@@ -5,3 +5,16 @@ table {
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.loading-spinner {
+  padding: 25px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.table-courses{
+  padding: 25px;
+  border-radius: 100px;
+}

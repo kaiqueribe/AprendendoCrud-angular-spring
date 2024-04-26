@@ -1,3 +1,5 @@
+
+
 table {
   width: 100%;
 }
@@ -12,9 +14,17 @@ table {
   align-content: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }
 
 .table-courses{
   padding: 25px;
-  border-radius: 100px;
+  border-radius: 10px;
+  border: black;
 }
+
+.toolbar-form-course{
+  padding: 5px;
+  border-radius: 10px;
+}
+

@@ -25,9 +25,9 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
-    this.service.save(this.form.value)
-      .subscribe(result => console.log(result), error => this.onError());
+    // console.log(this.form.value);
+    this.service.save(this.form.value).subscribe(result => console.log(result));
+      // .subscribe(result => console.log(result), error => this.onError());
   }
 
   onCancel() {
@@ -37,10 +37,10 @@ export class CourseFormComponent implements OnInit {
     console.log('Sucesso');
     this.onCancel();
   }
-  private onError() {
-    this.snackBar.open('Erro ao Cadastrar o Curso','', {duration: 3000});
-  }
 
+  private onError() {
+    this.snackBar.open('Erro ao Cadastrar o Curso', '', {duration: 3000});
+  }
 
 
 }

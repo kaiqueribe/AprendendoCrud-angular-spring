@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {CoursesService} from "../services/courses.service";
+import {Location} from "@angular/common";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -14,11 +15,13 @@ export class CourseFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private service: CoursesService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private location: Location) {
     this.form = this.formBuilder.group({
       name: [null],
       category: [null]
     });
+
   }
 
   ngOnInit(): void {
@@ -26,11 +29,15 @@ export class CourseFormComponent implements OnInit {
 
   onSubmit() {
     // console.log(this.form.value);
-    this.service.save(this.form.value).subscribe(result => console.log(result));
-      // .subscribe(result => console.log(result), error => this.onError());
+    // this.service.save(this.form.value)
+    this.service.save(this.form.value)
+      .subscribe(result => console.log(result), error => this.onError());
+    // .subscribe(result => console.log(result), error => this.onError());
   }
 
   onCancel() {
+    console.log('onCalcel');
+    this.location.back();
   }
 
   private onSuccess() {
@@ -39,9 +46,15 @@ export class CourseFormComponent implements OnInit {
   }
 
   private onError() {
-    this.snackBar.open('Erro ao Cadastrar o Curso', '', {duration: 3000});
-  }
+    // this.snackBar.open('Erro ao Cadastrar o Curso', '', {duration: 3000});
 
+    this.snackBar.open('Não foi possivel salvar o novo curso', '', {
+      duration: 5000,
+      horizontalPosition: "center",
+      verticalPosition: "top"
+    });
+
+  }
 
 }
 

@@ -5,9 +5,10 @@ import {Location} from "@angular/common";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-course-form',
-  templateUrl: './course-form.component.html',
-  styleUrl: './course-form.component.scss'
+    selector: 'app-course-form',
+    templateUrl: './course-form.component.html',
+    styleUrl: './course-form.component.scss',
+    standalone: false
 })
 export class CourseFormComponent implements OnInit {
 

@@ -51,5 +51,9 @@ export class CoursesComponent implements OnInit {
     this.router.navigate(['courses/new']);
   }
 
+  onEdit(){
+    console.log('onEdit')
+  }
+
 
 }

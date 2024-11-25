@@ -31,7 +31,7 @@ export class CourseFormComponent implements OnInit {
     // console.log(this.form.value);
     // this.service.save(this.form.value)
     this.service.save(this.form.value)
-      .subscribe(result => console.log(result), error => this.onError());
+      .subscribe(result => this.onSuccess(), error => this.onError());
     // .subscribe(result => console.log(result), error => this.onError());
   }
 
@@ -42,6 +42,11 @@ export class CourseFormComponent implements OnInit {
 
   private onSuccess() {
     console.log('Sucesso');
+    this.snackBar.open('Curso Salvo com Sucesso!', '', {
+      duration: 5000,
+      horizontalPosition: "center",
+      verticalPosition: "top"
+    });
     this.onCancel();
   }
 

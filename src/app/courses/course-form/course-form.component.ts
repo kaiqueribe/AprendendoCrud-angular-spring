@@ -1,31 +1,32 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {NonNullableFormBuilder} from "@angular/forms";
 import {CoursesService} from "../services/courses.service";
 import {Location} from "@angular/common";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
-    selector: 'app-course-form',
-    templateUrl: './course-form.component.html',
-    styleUrl: './course-form.component.scss',
-    standalone: false
+  selector: 'app-course-form',
+  templateUrl: './course-form.component.html',
+  styleUrl: './course-form.component.scss',
+  standalone: false
 })
 export class CourseFormComponent implements OnInit {
 
-  form: FormGroup;
+  form = this.formBuilder.group({
+    name: [''],
+    category: ['']
+  });
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: NonNullableFormBuilder,
               private service: CoursesService,
               private snackBar: MatSnackBar,
               private location: Location) {
-    this.form = this.formBuilder.group({
-      name: [null],
-      category: [null]
-    });
+    // this.form
 
   }
 
   ngOnInit(): void {
+
   }
 
   onSubmit() {

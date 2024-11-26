@@ -28,6 +28,9 @@ export class CoursesService {
     console.log(course);
   }
 
+  edit(){
+
+  }
 
 
 

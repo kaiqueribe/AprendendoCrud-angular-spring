@@ -5,6 +5,7 @@ import {catchError, Observable, of} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {ErrorDialogComponent} from "../../shared/components/error-dialog/error-dialog.component";
 import {ActivatedRoute, Router} from "@angular/router";
+import {relative} from "@angular/compiler-cli";
 
 
 @Component({
@@ -50,7 +51,7 @@ export class CoursesComponent implements OnInit {
 
   onAdd() {
     console.log('onAdd');
-    this.router.navigate(['courses/new']);
+    this.router.navigate(['courses/new'],{relativeTo:this.route});
   }
 
   onEdit(){

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NonNullableFormBuilder} from "@angular/forms";
-import {CoursesService} from "../services/courses.service";
+import {CoursesService} from "../../services/courses.service";
 import {Location} from "@angular/common";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -45,7 +45,7 @@ export class CourseFormComponent implements OnInit {
   private onSuccess() {
     console.log('Sucesso');
     this.snackBar.open('Curso Salvo com Sucesso!', '', {
-      duration: 5000,
+      duration: 2000,
       horizontalPosition: "center",
       verticalPosition: "top"
     });
@@ -56,7 +56,7 @@ export class CourseFormComponent implements OnInit {
     // this.snackBar.open('Erro ao Cadastrar o Curso', '', {duration: 3000});
 
     this.snackBar.open('Não foi possivel salvar o novo curso', '', {
-      duration: 5000,
+      duration: 2000,
       horizontalPosition: "center",
       verticalPosition: "top"
     });

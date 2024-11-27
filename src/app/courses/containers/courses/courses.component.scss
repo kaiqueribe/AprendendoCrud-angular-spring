@@ -1,5 +1,5 @@
 
-mat-card{
+mat-card {
   max-width: 80%;
   margin: 2em auto;
   text-align: center;
@@ -7,7 +7,7 @@ mat-card{
 .column-flex{
   display: flex ;
   flex-direction: column;
-  min-width: 300px;
+  //min-width: 300px;
 }
 
 .example-spacer {
@@ -20,7 +20,7 @@ mat-card{
   align-content: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
+
 }
 
 .table-courses{

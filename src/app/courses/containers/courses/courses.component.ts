@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {Course} from "../model/course";
-import {CoursesService} from "../services/courses.service";
+import {Course} from "../../model/course";
+import {CoursesService} from "../../services/courses.service";
 import {catchError, Observable, of} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
-import {ErrorDialogComponent} from "../../shared/components/error-dialog/error-dialog.component";
+import {ErrorDialogComponent} from "../../../shared/components/error-dialog/error-dialog.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {relative} from "@angular/compiler-cli";
 
 
 @Component({
-    selector: 'app-courses',
-    templateUrl: './courses.component.html',
-    styleUrl: './courses.component.scss',
-    standalone: false
+  selector: 'app-courses',
+  templateUrl: './courses.component.html',
+  styleUrl: './courses.component.scss',
+  standalone: false
 })
 export class CoursesComponent implements OnInit {
 
@@ -26,7 +26,7 @@ export class CoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService,
               public dialog: MatDialog,
               private router: Router,
-              private route : ActivatedRoute
+              private route: ActivatedRoute
   ) {
     // this.coursesService = new CoursesService();
     this.courses$ = this.coursesService.list()
@@ -54,8 +54,11 @@ export class CoursesComponent implements OnInit {
     this.router.navigate(['courses/new'],{relativeTo:this.route});
   }
 
-  onEdit(){
-    console.log('onEdit')
-    this.router.navigate(['courses/edit']);
+  onEdit(course:Course) {
+    this.router.navigate(['courses/edit', course._id],{relativeTo:this.route});
+  }
+
+  onDelete() {
+    console.log('onDelete');
   }
 }

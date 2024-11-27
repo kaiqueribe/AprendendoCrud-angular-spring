@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Course} from "../model/course";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Course} from "../../model/course";
+// import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-courses-list',
@@ -14,7 +14,12 @@ export class CoursesListComponent implements OnInit {
 
   @Output() add = new EventEmitter(false);
 
-  readonly displayedColumns = ['_id','name', 'category', 'actions'];
+  @Output() edit = new EventEmitter(false);
+
+  @Output() delete = new EventEmitter(false);
+
+
+  readonly displayedColumns = ['_id', 'name', 'category', 'actions'];
 
   constructor() {
 
@@ -25,16 +30,15 @@ export class CoursesListComponent implements OnInit {
   }
 
   onAdd() {
-this.add.emit(true);
+    this.add.emit(true);
   }
 
-  onEdit(){
-    console.log('onEdit')
-    // this.router.navigate(['courses/edit']);
+  onEdit(course:Course) {
+    this.edit.emit(course);
   }
 
-  onDelete(){
-    console.log('onDelete')
+  onDelete() {
+    this.delete.emit(true);
   }
 
 

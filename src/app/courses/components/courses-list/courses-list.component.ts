@@ -19,7 +19,7 @@ export class CoursesListComponent implements OnInit {
   @Output() delete = new EventEmitter(false);
 
 
-  readonly displayedColumns = ['_id', 'name', 'category', 'actions'];
+  readonly displayedColumns = [ 'name', 'category', 'actions'];
 
   constructor() {
 

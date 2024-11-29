@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ErrorDialogComponent} from "../../../shared/components/error-dialog/error-dialog.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {relative} from "@angular/compiler-cli";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class CoursesComponent implements OnInit {
 
 
   constructor(private coursesService: CoursesService,
+              private snackBar: MatSnackBar,
               public dialog: MatDialog,
               private router: Router,
               private route: ActivatedRoute
@@ -61,5 +63,11 @@ export class CoursesComponent implements OnInit {
 
   onDelete() {
     console.log('onDelete');
+
+    this.snackBar.open('Curso removido com sucesso!', '', {
+      duration: 2000,
+      horizontalPosition: "center",
+      verticalPosition: "top"
+    });
   }
 }

@@ -53,21 +53,22 @@ export class CoursesComponent implements OnInit {
 
   onAdd() {
     console.log('onAdd');
-    this.router.navigate(['new'],{relativeTo:this.route});
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
-  onEdit(course:Course) {
-    this.router.navigate(['edit', course._id],{relativeTo:this.route});
+  onEdit(course: Course) {
+    this.router.navigate(['edit', course._id], {relativeTo: this.route});
     console.log('onEdit')
   }
 
-  onDelete() {
-    console.log('onDelete');
-
-    this.snackBar.open('Curso removido com sucesso!', '', {
-      duration: 2000,
-      horizontalPosition: "center",
-      verticalPosition: "top"
-    });
+  onDelete(course: Course) {
+    this.coursesService.delete(course._id).subscribe(value => {
+      console.log('onDelete');
+      this.snackBar.open('Curso removido com sucesso!', 'x', {
+        duration: 2000,
+        horizontalPosition: "center",
+        verticalPosition: "top"
+      });
+    })
   }
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Course} from "../model/course";
-import { HttpClient } from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {delay, first, take, tap} from "rxjs";
 
 @Injectable({
@@ -17,35 +17,35 @@ export class CoursesService {
     return this.httpClient.get<Course[]>(this.API)
       .pipe(
         first(),
-        delay(2000),
+        delay(1000),
         tap(courses => console.log(courses))
       );
 
   }
 
-  loadById(id:string){
-   return this.httpClient.get<Course>(`${this.API}/${id}`);
+  loadById(id: string) {
+    return this.httpClient.get<Course>(`${this.API}/${id}`);
   }
 
-  save(course: Partial<Course>){
+  save(course: Partial<Course>) {
 
-    if(course._id){
+    if (course._id) {
       return this.update(course);
     }
 
     return this.create(course);
   }
 
-  private create(course: Partial<Course>){
+  private create(course: Partial<Course>) {
     return this.httpClient.post<Course>(this.API, course).pipe(first())
   }
 
-  private update (course: Partial<Course>){
+  private update(course: Partial<Course>) {
     return this.httpClient.put<Course>(`${this.API}/${course._id}`, course).pipe(first())
   }
 
-  // private delete (course:Partial<Course>){
-  //   return this.httpClient.delete<Course>(`${this.API}/${course._id}`, course).pipe(first())
-  // }
+  delete(id: string) {
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(first())
+  }
 
 }

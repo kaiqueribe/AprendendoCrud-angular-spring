@@ -5,7 +5,8 @@ import {catchError, Observable, of} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {ErrorDialogComponent} from "../../../shared/components/error-dialog/error-dialog.component";
 import {ActivatedRoute, Router} from "@angular/router";
-import {relative} from "@angular/compiler-cli";
+
+
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 
@@ -17,7 +18,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class CoursesComponent implements OnInit {
 
-  courses$: Observable<Course[]>;
+  courses$: Observable<Course[]> | null = null;
   // courses:Course[] = [];
 
 
@@ -30,7 +31,10 @@ export class CoursesComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute
   ) {
-    // this.coursesService = new CoursesService();
+    this.refresh();
+  }
+
+  refresh() {
     this.courses$ = this.coursesService.list()
       .pipe(
         catchError(error => {
@@ -38,7 +42,6 @@ export class CoursesComponent implements OnInit {
           return of([]);
         })
       );
-
   }
 
   onError(errorMsg: string) {
@@ -64,11 +67,14 @@ export class CoursesComponent implements OnInit {
   onDelete(course: Course) {
     this.coursesService.delete(course._id).subscribe(value => {
       console.log('onDelete');
+      this.refresh();
       this.snackBar.open('Curso removido com sucesso!', 'x', {
         duration: 2000,
         horizontalPosition: "center",
         verticalPosition: "top"
       });
-    })
+    },
+      error => this.onError('Erro ao tentar remover curso.'))
   }
+
 }

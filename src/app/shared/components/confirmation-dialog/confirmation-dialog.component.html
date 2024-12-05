@@ -1,9 +1,9 @@
 <div mat-dialog-content>
   <p>{{data}}</p>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onConfirm(true)">Sim</button>
-  <button mat-button (click)="onConfirm(false)">Não</button>
+<div mat-dialog-actions class="button-action" align="center">
+  <button mat-raised-button color="warn" (click)="onConfirm(true)">Deletar</button>
+  <button mat-raised-button (click)="onConfirm(false)">Cancelar</button>
 </div>
 
 

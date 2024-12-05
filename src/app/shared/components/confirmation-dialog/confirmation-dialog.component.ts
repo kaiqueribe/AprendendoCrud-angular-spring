@@ -1,5 +1,5 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject, inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -8,17 +8,23 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
   templateUrl: './confirmation-dialog.component.html',
   styleUrl: './confirmation-dialog.component.scss'
 })
-export class ConfirmationDialogComponent implements OnInit{
+export class ConfirmationDialogComponent implements OnInit {
 
-  constructor() {}
+  // constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>) {
+  // }
 
-  readonly dialog = inject(MatDialog);
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: string,
+  ) {}
 
 
-
-
-  ngOnInit(){
-
+  ngOnInit() {
   }
+
+  onConfirm(result: boolean): void {
+    this.dialogRef.close(result);
+  }
+
 
 }
